@@ -1,0 +1,23 @@
+#
+# maintainer="Phuwanai Thummavet <www.serial-coder.com>"
+#
+
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - 32000:1323
+    environment:
+    - SERVICE_B2_PORT=1323
+    - HOST=http://httpbin.org
+    - PORT=
+    networks:
+      servicemesh:
+        aliases:
+          - app
+
+networks:
+  servicemesh: {}
